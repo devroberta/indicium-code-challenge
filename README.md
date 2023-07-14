@@ -1,15 +1,15 @@
-#Description of the files created in python to solve the proposed problems.
+# Description of the files created in python to solve the proposed problems.
 
-##bdQueryOrdersDetails.py 
+## bdQueryOrdersDetails.py 
 This python file makes a database query about the stored orders.
 
-##createTableService.py
+## createTableService.py
 This python file creates a csv file of the database table according to the table name entered by the user.
 
-##insertTableOrdersDetails.py
+## insertTableOrdersDetails.py
 Este arquivo python insere no banco de dados os registro do arquivo CSV referente a tabela de detalhes do pedido.
 
-##verifyFileCSV.py
+## verifyFileCSV.py
 This python file parses the CSV file to see if it contains records with invalid or null fields.
 
 <br>
