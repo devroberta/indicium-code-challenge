@@ -34,6 +34,7 @@ DROP TABLE IF EXISTS us_states;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS region;
 DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS order_details;
 
 --
 -- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -226,6 +227,18 @@ CREATE TABLE us_states (
     state_name character varying(100),
     state_abbr character varying(2),
     state_region character varying(50)
+);
+
+--
+-- Name: order_details; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE order_details (
+	order_id smallint NOT NULL,
+	product_id smallint NOT NULL,
+	unit_price real NOT NULL,
+	quantity smallint NOT NULL,
+	discount decimal	
 );
 
 
@@ -1619,6 +1632,14 @@ ALTER TABLE ONLY territories
 
 ALTER TABLE ONLY us_states
     ADD CONSTRAINT pk_usstates PRIMARY KEY (state_id);
+  
+  
+--
+-- Name: pk_order_id_product_id; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY order_details    
+    ADD CONSTRAINT pk_order_id_product_id PRIMARY KEY(order_id, product_id);
 
 
 --
@@ -1707,6 +1728,22 @@ ALTER TABLE ONLY customer_customer_demo
 
 ALTER TABLE ONLY employees
     ADD CONSTRAINT fk_employees_employees FOREIGN KEY (reports_to) REFERENCES employees;
+
+
+--
+-- Name: fk_order_details_order_id; Type: Constraint; Schema: -; Owner: -
+--
+
+ALTER TABLE only order_details
+	ADD CONSTRAINT fk_order_details_order_id FOREIGN KEY (order_id) REFERENCES orders;
+	
+
+--
+-- Name: fk_order_details_products; Type: Constraint; Schema: -; Owner: -
+--	
+
+ALTER TABLE only order_details
+	ADD CONSTRAINT fk_order_details_products FOREIGN KEY (product_id) REFERENCES products;
 
     
 --
